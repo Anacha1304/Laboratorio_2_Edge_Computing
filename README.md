@@ -120,7 +120,7 @@ Ejecútelo en el hardware real. Mientras corre, abra otra terminal vía SSH y us
 
 
 
-https://github.com/user-attachments/assets/8aa647e8-342d-4bab-bdaa-58c64bc26abf
+
 
 
 
@@ -143,6 +143,8 @@ El programa realizó el parpadeo del pin, alternando entre estados HIGH (ON) y L
 
 ### Análisis
 El uso de libgpiod demuestra el modelo moderno de acceso a hardware en Linux, donde el acceso directo a registros está prohibido y en su lugar se utilizan interfaces controladas por el kernel. Esto garantiza seguridad, control de acceso y correcta administración de los recursos hardware entre múltiples procesos.
+
+https://github.com/user-attachments/assets/8aa647e8-342d-4bab-bdaa-58c64bc26abf
 
 # Parte C: Tiempo, Memoria y Concurrencia (Ejecución Nativa - Casa)
 
