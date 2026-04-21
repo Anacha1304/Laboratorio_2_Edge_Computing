@@ -118,6 +118,26 @@ Compile cruzado su código y transfiéralo a la Raspberry Pi 5.
 
 Ejecútelo en el hardware real. Mientras corre, abra otra terminal vía SSH y use gpioget o gpioinfo para verificar que la línea solicitada está reservada por su proceso.
 
+## Solución
+Para esta actividad se desarrolló un programa en C++ que permite controlar un pin GPIO utilizando la librería libgpiod, la cual es la interfaz moderna en Linux para interactuar con los pines mediante dispositivos de tipo character device ubicados en /dev/.
+
+El programa no accede al chip por un número fijo, sino que busca dinámicamente el chip GPIO utilizando su etiqueta (label), en este caso "pinctrl-rp1", lo cual hace el código más portable y adaptable al hardware.
+
+<img width="1600" height="900" alt="WhatsApp Image 2026-04-21 at 2 46 14 PM" src="https://github.com/user-attachments/assets/1cc26a29-0b77-4c46-910f-baf7e26eea23" />
+
+### Compilación
+
+El programa fue compilado utilizando el comando:
+*g++ blink_gpiod.cpp -o blink_gpiod -lgpiod*
+
+### Ejecución en Raspberry Pi 5
+El ejecutable fue transferido a la Raspberry Pi 5 y ejecutado directamente en el hardware. Al correr el programa, se logró identificar correctamente el chip GPIO mediante su etiqueta, y se solicitó la línea correspondiente al GPIO 17 como salida.
+
+El programa realizó el parpadeo del pin, alternando entre estados HIGH (ON) y LOW (OFF) cada 500 ms durante 10 ciclos, lo cual fue verificado visualmente en el hardware.
+
+### Análisis
+El uso de libgpiod demuestra el modelo moderno de acceso a hardware en Linux, donde el acceso directo a registros está prohibido y en su lugar se utilizan interfaces controladas por el kernel. Esto garantiza seguridad, control de acceso y correcta administración de los recursos hardware entre múltiples procesos.
+
 # Parte C: Tiempo, Memoria y Concurrencia (Ejecución Nativa - Casa)
 
 Actividad 4: Abstracción de Tiempo y Syscalls
