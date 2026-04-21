@@ -92,13 +92,17 @@ Contexto: Desarrollar en el hardware objetivo (SBC) suele ser lento. El cross-co
 
 Utilice file <binario> para comprobar la arquitectura del ejecutable.
 
+<img width="1245" height="101" alt="image" src="https://github.com/user-attachments/assets/cf77c251-cab0-4a20-900b-5ac90804311e" />
+
 Ejecútelo simulando la arquitectura localmente: qemu-aarch64 -L /usr/aarch64-linux-gnu/ ./<binario>.
 
 <img width="1213" height="349" alt="image" src="https://github.com/user-attachments/assets/5020e194-d2c3-44d6-ac43-bc5795d73679" />
 
-
 Transfiera el binario a la Raspberry Pi 5 usando scp y ejecútelo nativamente para confirmar el flujo de trabajo.
 
+<img width="1600" height="229" alt="image" src="https://github.com/user-attachments/assets/2bb71a82-abed-4d90-b958-fd3dba948100" />
+
+Se realizó la compilación cruzada del programa utilizando aarch64-linux-gnu-g++, generando ejecutables para la arquitectura ARM64 desde una máquina host distinta. Mediante el comando file se verificó que los binarios correspondían a ejecutables ELF para aarch64, confirmando que fueron correctamente construidos para la arquitectura objetivo. Posteriormente, se ejecutaron en la máquina local usando qemu-aarch64, lo que permitió simular su funcionamiento y validar que el programa operaba correctamente al imprimir “Hola Mundo”. Finalmente, los binarios fueron transferidos a la Raspberry Pi 5 mediante scp y ejecutados de forma nativa, obteniendo el mismo resultado. Esto demuestra que el flujo de cross-compiling fue exitoso y que los ejecutables son portables entre diferentes arquitecturas, validando tanto la emulación como la ejecución real en el hardware destino.
 
 # Parte B: Interacción con Hardware (Fase Presencial)
 
