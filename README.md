@@ -118,6 +118,12 @@ Compile cruzado su código y transfiéralo a la Raspberry Pi 5.
 
 Ejecútelo en el hardware real. Mientras corre, abra otra terminal vía SSH y use gpioget o gpioinfo para verificar que la línea solicitada está reservada por su proceso.
 
+
+
+https://github.com/user-attachments/assets/8aa647e8-342d-4bab-bdaa-58c64bc26abf
+
+
+
 ## Solución
 Para esta actividad se desarrolló un programa en C++ que permite controlar un pin GPIO utilizando la librería libgpiod, la cual es la interfaz moderna en Linux para interactuar con los pines mediante dispositivos de tipo character device ubicados en /dev/.
 
