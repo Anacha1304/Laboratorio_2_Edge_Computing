@@ -324,6 +324,12 @@ La salida del programa mostró que se llegó a reservar cerca de 1961 MB en el H
 
 El OOM Killer mata el proceso porque el Heap puede seguir creciendo dinámicamente mientras haya recursos disponibles en el sistema. Cuando la memoria global se vuelve insuficiente, el kernel selecciona y finaliza procesos para proteger la estabilidad del sistema.
 
+El tiempo user es casi 0.000s porque el programa no estuvo utilizando activamente la CPU durante la mayor parte de su ejecución. Esto se debe a que la función delay() utiliza la llamada al sistema nanosleep(), la cual suspende el proceso y le indica al sistema operativo que no necesita el procesador durante ese intervalo de tiempo.
+
+Aunque el programa tarda aproximadamente 2 segundos en tiempo real (real ≈ 2s), ese tiempo corresponde a una espera pasiva gestionada por el kernel de Linux, no a ejecución activa de instrucciones por parte del programa. Por esta razón, el tiempo de CPU consumido (user) es prácticamente nulo.
+
+Durante ese periodo, el control del procesador lo tiene el sistema operativo (kernel), el cual puede asignar la CPU a otros procesos mientras el programa está en estado de espera.
+
 ---
 
 # Actividad 6: Procesamiento Paralelo: Procesos vs. Hilos
