@@ -177,6 +177,10 @@ Contexto: El espacio de direcciones tiene límites. El Heap maneja memoria diná
 
 1. Escriba un código con dos tareas:
 
+<img width="470" height="502" alt="WhatsApp Image 2026-04-21 at 9 07 35 PM" src="https://github.com/user-attachments/assets/8e69a7f6-ecb1-4c3b-82c2-cffa6c6ab11d" />
+
+
+
 Heap: Un ciclo infinito que reserve memoria dinámicamente y la inicialice (ej. con memset).
 
 Stack: Una función recursiva infinita con un arreglo local muy grande (ej. 1MB).
@@ -185,7 +189,26 @@ Stack: Una función recursiva infinita con un arreglo local muy grande (ej. 1MB)
 
 Heap: Ejecute observando htop (columnas VIRT y RES). Tras ser cancelado, ejecute sudo dmesg | tail -n 20 e identifique el mensaje donde el OOM Killer asesina su proceso. (No ejecutar en una máquina ejecutando procesos sensibles pues puede volverse inestable)
 
+<img width="777" height="488" alt="image" src="https://github.com/user-attachments/assets/4658de0b-f01c-49e1-b77a-241925ed6ca2" />
+
+<img width="1228" height="757" alt="image" src="https://github.com/user-attachments/assets/434eb538-5845-4eba-971b-1f803662c262" />
+
+<img width="535" height="369" alt="image" src="https://github.com/user-attachments/assets/a3ab517c-3415-42f0-8da2-d4f819996f03" />
+
+<img width="1230" height="420" alt="image" src="https://github.com/user-attachments/assets/7614f3a6-d3bf-4295-afcb-6f602ebda186" />
+
+
 Stack: Anote a qué profundidad exacta (MB) se detiene. Identifique el error (Segmentation fault). ¿Por qué el OS detiene este proceso mucho antes de quedarse sin RAM, a diferencia de la prueba del Heap?
+
+<img width="713" height="470" alt="image" src="https://github.com/user-attachments/assets/7b927609-f022-4221-ac55-449302dd6dd5" />
+
+<img width="785" height="380" alt="image" src="https://github.com/user-attachments/assets/76bd069e-a780-4225-8ee6-ebfb11e37d4e" />
+
+En la prueba de Heap se ejecutó un programa que reservaba memoria dinámicamente en bloques de 1 MB dentro de un ciclo infinito, inicializando cada bloque con memset. En htop se observó el proceso heap_test con un crecimiento progresivo de memoria, alcanzando aproximadamente 1379 MB de memoria virtual (VIRT) y 1143 MB de memoria residente (RES). Esto demuestra que la memoria no solo fue reservada, sino también usada físicamente en RAM.
+
+La salida del programa mostró que se llegó a reservar cerca de 1961 MB en el Heap, momento en el cual el sistema terminó el proceso. Esto se confirmó con el comando sudo dmesg | tail -n 20, donde apareció el mensaje “Out of memory: Killed process 8740 (heap_test)”, indicando que el OOM Killer del sistema operativo intervino al agotarse la memoria disponible.
+
+El OOM Killer mata el proceso porque el Heap puede seguir creciendo dinámicamente mientras haya recursos disponibles en el sistema. Cuando la memoria global se vuelve insuficiente, el kernel selecciona y finaliza procesos para proteger la estabilidad del sistema.
 
 ## Actividad 6: Procesamiento Paralelo: Procesos vs. Hilos
 
