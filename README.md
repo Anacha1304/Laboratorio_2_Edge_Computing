@@ -148,11 +148,13 @@ https://github.com/user-attachments/assets/8aa647e8-342d-4bab-bdaa-58c64bc26abf
 
 # Parte C: Tiempo, Memoria y Concurrencia (Ejecución Nativa - Casa)
 
-Actividad 4: Abstracción de Tiempo y Syscalls
+## Actividad 4: Abstracción de Tiempo y Syscalls
 
 Contexto: En microcontroladores sencillos, un delay() suele ser un bucle infinito ("espera activa") que bloquea el procesador. En un sistema operativo multitarea, esto es inaceptable. El proceso debe pedirle al kernel que lo "duerma" y lo despierte en el futuro, liberando la CPU.
 
 1. Implemente una función delay(ms) usando llamadas al sistema de POSIX (nanosleep).
+<img width="530" height="77" alt="image" src="https://github.com/user-attachments/assets/205738c5-b994-4258-aed7-a1808cfb26ba" />
+Figura 1. Verificación de la distribución Linux instalada en WSL. Se observa Ubuntu ejecutándose sobre WSL2, lo que permite utilizar llamadas al sistema POSIX como nanosleep().
 
 2. Guía de Análisis:
 
