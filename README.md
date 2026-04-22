@@ -152,7 +152,6 @@ https://github.com/user-attachments/assets/8aa647e8-342d-4bab-bdaa-58c64bc26abf
 
 Contexto: En microcontroladores sencillos, un delay() suele ser un bucle infinito ("espera activa") que bloquea el procesador. En un sistema operativo multitarea, esto es inaceptable. El proceso debe pedirle al kernel que lo "duerma" y lo despierte en el futuro, liberando la CPU.
 
-1. Implemente una función delay(ms) usando llamadas al sistema de POSIX (nanosleep).
 <img width="530" height="77" alt="image" src="https://github.com/user-attachments/assets/205738c5-b994-4258-aed7-a1808cfb26ba" />
 Figura 1. Verificación de la distribución Linux instalada en WSL. Se observa Ubuntu ejecutándose sobre WSL2, lo que permite utilizar llamadas al sistema POSIX como nanosleep().
 
@@ -170,6 +169,7 @@ Figura 5. Compilación exitosa del programa. El archivo ejecutable delay es gene
 
 <img width="654" height="155" alt="image" src="https://github.com/user-attachments/assets/cae0fb8e-ebba-4c1b-b9c3-59285da2df94" />
 Figura 6. Medición de tiempos con time. El valor real refleja el tiempo total transcurrido (≈2 s), mientras que user es cercano a 0 debido a que el proceso fue suspendido por el kernel mediante nanosleep(), liberando la CPU para otros procesos.
+
 
 ## Actividad 5: Consumo de Heap y Stack
 
