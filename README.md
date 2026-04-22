@@ -165,12 +165,11 @@ Figura 3. Verificación del compilador GCC instalado. GCC permite compilar progr
 <img width="554" height="602" alt="image" src="https://github.com/user-attachments/assets/c2b65280-819e-43a3-babb-328fc9d9d72e" />
 Figura 4. Implementación de la función delay(ms) utilizando la llamada al sistema nanosleep(). La función convierte milisegundos a segundos y nanosegundos para que el kernel gestione la suspensión del proceso.
 
-2. Guía de Análisis:
+<img width="739" height="24" alt="image" src="https://github.com/user-attachments/assets/b823cf45-4ca4-412f-babc-f53dfab26636" />
+Figura 5. Compilación exitosa del programa. El archivo ejecutable delay es generado sin errores.
 
-Escriba un programa que llame a delay(2000). Ejecútelo anteponiendo el comando time (ej. time ./su_programa).
-
-Observe la salida (real, user, sys). ¿Por qué el tiempo user (tiempo de CPU consumido) es casi 0.000s, aunque el programa duró 2 segundos reales? ¿Quién tenía el control del procesador?
-
+<img width="654" height="155" alt="image" src="https://github.com/user-attachments/assets/cae0fb8e-ebba-4c1b-b9c3-59285da2df94" />
+Figura 6. Medición de tiempos con time. El valor real refleja el tiempo total transcurrido (≈2 s), mientras que user es cercano a 0 debido a que el proceso fue suspendido por el kernel mediante nanosleep(), liberando la CPU para otros procesos.
 
 ## Actividad 5: Consumo de Heap y Stack
 
