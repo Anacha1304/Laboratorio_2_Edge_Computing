@@ -234,39 +234,39 @@ En microcontroladores sencillos, un delay() suele ser un bucle infinito ("espera
 
 ---
 
+Verificación de la distribución Linux instalada en WSL. Se observa Ubuntu ejecutándose sobre WSL2, lo que permite utilizar llamadas al sistema POSIX como nanosleep().
+
 <img width="530" height="77" src="https://github.com/user-attachments/assets/205738c5-b994-4258-aed7-a1808cfb26ba" />
 
-Figura 1. Verificación de la distribución Linux instalada en WSL. Se observa Ubuntu ejecutándose sobre WSL2, lo que permite utilizar llamadas al sistema POSIX como nanosleep().
-
 ---
+
+Entorno Linux (Ubuntu en WSL) listo para compilar y ejecutar programas en C utilizando el kernel Linux.
 
 <img width="495" height="60" src="https://github.com/user-attachments/assets/eb056e97-53e5-4258-bbac-d04c5a247a4a" />
 
-Figura 2. Entorno Linux (Ubuntu en WSL) listo para compilar y ejecutar programas en C utilizando el kernel Linux.
-
 ---
+
+Verificación del compilador GCC instalado. GCC permite compilar programas en C que utilizan llamadas al sistema POSIX.
 
 <img width="907" height="118" src="https://github.com/user-attachments/assets/b424bae1-80d9-4de9-8d27-b6dd95c9a223" />
 
-Figura 3. Verificación del compilador GCC instalado. GCC permite compilar programas en C que utilizan llamadas al sistema POSIX.
-
 ---
+
+Implementación de la función delay(ms) utilizando la llamada al sistema nanosleep(). La función convierte milisegundos a segundos y nanosegundos para que el kernel gestione la suspensión del proceso.
 
 <img width="554" height="602" src="https://github.com/user-attachments/assets/c2b65280-819e-43a3-babb-328fc9d9d72e" />
 
-Figura 4. Implementación de la función delay(ms) utilizando la llamada al sistema nanosleep(). La función convierte milisegundos a segundos y nanosegundos para que el kernel gestione la suspensión del proceso.
-
 ---
+
+Compilación exitosa del programa. El archivo ejecutable delay es generado sin errores.
 
 <img width="739" height="24" src="https://github.com/user-attachments/assets/b823cf45-4ca4-412f-babc-f53dfab26636" />
 
-Figura 5. Compilación exitosa del programa. El archivo ejecutable delay es generado sin errores.
-
 ---
 
-<img width="654" height="155" src="https://github.com/user-attachments/assets/cae0fb8e-ebba-4c1b-b9c3-59285da2df94" />
+Medición de tiempos con time. El valor real refleja el tiempo total transcurrido (≈2 s), mientras que user es cercano a 0 debido a que el proceso fue suspendido por el kernel mediante nanosleep(), liberando la CPU para otros procesos.
 
-Figura 6. Medición de tiempos con time. El valor real refleja el tiempo total transcurrido (≈2 s), mientras que user es cercano a 0 debido a que el proceso fue suspendido por el kernel mediante nanosleep(), liberando la CPU para otros procesos.
+<img width="654" height="155" src="https://github.com/user-attachments/assets/cae0fb8e-ebba-4c1b-b9c3-59285da2df94" />
 
 ---
 
