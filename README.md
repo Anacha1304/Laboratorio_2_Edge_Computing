@@ -162,7 +162,8 @@ Figura 2. Entorno Linux (Ubuntu en WSL) listo para compilar y ejecutar programas
 <img width="907" height="118" alt="image" src="https://github.com/user-attachments/assets/b424bae1-80d9-4de9-8d27-b6dd95c9a223" />
 Figura 3. Verificación del compilador GCC instalado. GCC permite compilar programas en C que utilizan llamadas al sistema POSIX.
 
-
+<img width="554" height="602" alt="image" src="https://github.com/user-attachments/assets/c2b65280-819e-43a3-babb-328fc9d9d72e" />
+Figura 4. Implementación de la función delay(ms) utilizando la llamada al sistema nanosleep(). La función convierte milisegundos a segundos y nanosegundos para que el kernel gestione la suspensión del proceso.
 
 2. Guía de Análisis:
 
