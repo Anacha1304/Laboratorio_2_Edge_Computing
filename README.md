@@ -159,6 +159,11 @@ Figura 1. Verificación de la distribución Linux instalada en WSL. Se observa U
 <img width="495" height="60" alt="image" src="https://github.com/user-attachments/assets/eb056e97-53e5-4258-bbac-d04c5a247a4a" />
 Figura 2. Entorno Linux (Ubuntu en WSL) listo para compilar y ejecutar programas en C utilizando el kernel Linux.
 
+<img width="907" height="118" alt="image" src="https://github.com/user-attachments/assets/b424bae1-80d9-4de9-8d27-b6dd95c9a223" />
+Figura 3. Verificación del compilador GCC instalado. GCC permite compilar programas en C que utilizan llamadas al sistema POSIX.
+
+
+
 2. Guía de Análisis:
 
 Escriba un programa que llame a delay(2000). Ejecútelo anteponiendo el comando time (ej. time ./su_programa).
