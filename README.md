@@ -216,6 +216,13 @@ Contexto: Para concurrencia, podemos crear Procesos aislados (requieren pipes pa
 
 1. Implemente un programa que cuente la frecuencia de palabras del archivo https://www.gutenberg.org/ebooks/2000.txt.utf-8. Al final de cada programa incluya un llamado a sleep o entrada de datos de usuario de modo que le dé tiempo de realizar el análisis antes de que el programa termine.
 
+<img width="705" height="294" alt="image" src="https://github.com/user-attachments/assets/db05e04f-868d-4416-8b64-c683e36dccc2" />
+
+<img width="752" height="647" alt="image" src="https://github.com/user-attachments/assets/956713b8-1967-496c-8c81-1f68299bcdff" />
+
+<img width="782" height="661" alt="image" src="https://github.com/user-attachments/assets/ae984c69-af08-4684-a9ae-f1e2d66cf4ce" />
+
+
 Versión Procesos: El padre lee y envía palabras por un pipe al hijo, quien las cuenta.
 
 Versión Hilos: Un hilo encola las palabras; otro hilo las desencola y cuenta usando pthread_mutex.
@@ -224,6 +231,28 @@ Versión Hilos: Un hilo encola las palabras; otro hilo las desencola y cuenta us
 
 Ejecute la versión de Procesos. En top (o htop pero las instrucciones pueden cambiar), observe que existen dos filas con PID distintos. ¿Se duplicó la memoria RES consumida?
 
+<img width="571" height="158" alt="image" src="https://github.com/user-attachments/assets/783056f0-0374-4a9b-8aab-268190193818" />
+
+<img width="1150" height="686" alt="image" src="https://github.com/user-attachments/assets/58733628-2932-4218-9c00-0d01a4661c3b" />
+
+<br>
+
+En la versión con procesos, al ejecutar el programa y observar en top, se evidencian dos filas con PID distintos correspondientes al proceso padre y al proceso hijo. Sin embargo, la memoria RES no se duplica completamente, ya que el sistema operativo utiliza el mecanismo de copy-on-write, mediante el cual ambos procesos comparten inicialmente las mismas páginas de memoria y solo se duplican cuando alguno de ellos realiza modificaciones.
+
+
 Ejecute la versión de Hilos. En top, presione f, active TGID (Thread Group ID) y vuelva con q. Presione H para ver los hilos individualmente.
 
+<img width="432" height="251" alt="image" src="https://github.com/user-attachments/assets/c52b954a-1e6b-48ad-82f6-573817657fb5" />
+
+<img width="1228" height="708" alt="image" src="https://github.com/user-attachments/assets/7df2a999-80f7-4797-a836-888f5c3a7ca5" />
+
+<img width="1231" height="740" alt="image" src="https://github.com/user-attachments/assets/332c7757-05d3-4205-8032-4f691c47828c" />
+
+<img width="1235" height="709" alt="image" src="https://github.com/user-attachments/assets/580cd435-7a02-444d-af21-ac935db2ba3c" />
+
+En la versión con hilos, al activar la visualización de hilos con la tecla H y habilitar la columna TGID en top, se pueden observar dos filas correspondientes a los diferentes hilos del programa. Cada hilo aparece individualmente en la lista, permitiendo analizar su comportamiento de manera independiente dentro del mismo proceso.
+
 Explique qué significa que el PID (Thread ID) sea diferente para cada hilo, pero compartan el mismo TGID y la misma cantidad exacta de memoria RES
+
+El hecho de que cada hilo tenga un PID (Thread ID) diferente indica que el kernel los gestiona de forma individual. Sin embargo, todos comparten el mismo TGID, lo que significa que pertenecen al mismo proceso. Además, presentan el mismo valor de memoria RES, lo cual confirma que los hilos comparten el mismo espacio de memoria. Esto permite una comunicación más eficiente entre ellos, pero requiere mecanismos de sincronización como mutexes para evitar condiciones de carrera.
+
