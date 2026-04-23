@@ -390,3 +390,5 @@ En la versión con hilos, al activar la visualización de hilos con la tecla H y
 Explique qué significa que el PID (Thread ID) sea diferente para cada hilo, pero compartan el mismo TGID y la misma cantidad exacta de memoria RES.
 
 El hecho de que cada hilo tenga un PID (Thread ID) diferente indica que el kernel los gestiona de forma individual. Sin embargo, todos comparten el mismo TGID, lo que significa que pertenecen al mismo proceso. Además, presentan el mismo valor de memoria RES, lo cual confirma que los hilos comparten el mismo espacio de memoria. Esto permite una comunicación más eficiente entre ellos, pero requiere mecanismos de sincronización como mutexes para evitar condiciones de carrera.
+
+Esto evidencia la diferencia fundamental entre procesos e hilos, por un lado los procesos son unidades independientes con espacios de memoria separados, mientras que los hilos permiten concurrencia dentro de un mismo proceso compartiendo memoria.
