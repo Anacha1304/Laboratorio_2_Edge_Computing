@@ -268,6 +268,12 @@ Medición de tiempos con time. El valor real refleja el tiempo total transcurrid
 
 <img width="654" height="155" src="https://github.com/user-attachments/assets/cae0fb8e-ebba-4c1b-b9c3-59285da2df94" />
 
+El tiempo user es casi 0.000s porque el programa no estuvo utilizando activamente la CPU durante la mayor parte de su ejecución. Esto se debe a que la función delay() utiliza la llamada al sistema nanosleep(), la cual suspende el proceso y le indica al sistema operativo que no necesita el procesador durante ese intervalo de tiempo.
+
+Aunque el programa tarda aproximadamente 2 segundos en tiempo real (real ≈ 2s), ese tiempo corresponde a una espera pasiva gestionada por el kernel de Linux, no a ejecución activa de instrucciones por parte del programa. Por esta razón, el tiempo de CPU consumido (user) es prácticamente nulo.
+
+Durante ese periodo, el control del procesador lo tiene el sistema operativo (kernel), el cual puede asignar la CPU a otros procesos mientras el programa está en estado de espera.
+
 ---
 
 # Actividad 5: Consumo de Heap y Stack
@@ -323,12 +329,6 @@ En la prueba de Heap se ejecutó un programa que reservaba memoria dinámicament
 La salida del programa mostró que se llegó a reservar cerca de 1961 MB en el Heap, momento en el cual el sistema terminó el proceso. Esto se confirmó con el comando sudo dmesg | tail -n 20, donde apareció el mensaje “Out of memory: Killed process 8740 (heap_test)”, indicando que el OOM Killer del sistema operativo intervino al agotarse la memoria disponible.
 
 El OOM Killer mata el proceso porque el Heap puede seguir creciendo dinámicamente mientras haya recursos disponibles en el sistema. Cuando la memoria global se vuelve insuficiente, el kernel selecciona y finaliza procesos para proteger la estabilidad del sistema.
-
-El tiempo user es casi 0.000s porque el programa no estuvo utilizando activamente la CPU durante la mayor parte de su ejecución. Esto se debe a que la función delay() utiliza la llamada al sistema nanosleep(), la cual suspende el proceso y le indica al sistema operativo que no necesita el procesador durante ese intervalo de tiempo.
-
-Aunque el programa tarda aproximadamente 2 segundos en tiempo real (real ≈ 2s), ese tiempo corresponde a una espera pasiva gestionada por el kernel de Linux, no a ejecución activa de instrucciones por parte del programa. Por esta razón, el tiempo de CPU consumido (user) es prácticamente nulo.
-
-Durante ese periodo, el control del procesador lo tiene el sistema operativo (kernel), el cual puede asignar la CPU a otros procesos mientras el programa está en estado de espera.
 
 ---
 
